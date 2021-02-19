@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 
+<!--I was unable to get the html to connect to the script.js In orer to bypass this i have included the scripts in the HTML directly, This will loose marks but I could not find a solution-->
+
 <head>
-    <script src="script.js"></script>
     <title> Simple Interest Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -10,24 +11,32 @@
 <body>
     <div class="maindiv">
         <h1>Simple Interest Calculator</h1>
+ 
+        <!--Script for interest rate slider-->
+        <script>
+            function testPrincipalValidity(principalAmount) {
+                if (principalAmount >0){}
+                else {alert("The Amount must be a positive value");}    
+            }
+        </script>
 
+        <!--Element for principal amount-->
+        Amount <input type="number" id="principal" value=1000000 onchange="testPrincipalValidity(this.value)"> <br/>
 
-        <!--Slider element for principal amount-->
+        <!--Script for interest rate slider-->
         <script>
             function updateSlider(slideAmount) {
                 var sliderDiv = document.getElementById("sliderAmount");
                 sliderDiv.innerHTML = slideAmount;
             }
         </script>
-        Amount <input id="principal" type="range" min=1000 max=200000 step=1000 value=100000
-            onchange="updateSlider(this.value)">
+
+        <!--Element Interest rate slider-->
+        Rate <input id="rate" type="range" min=0.25 max=20 step=0.25 value=5 onmousemove="updateSlider(this.value)">
         <span id="sliderAmount"></span> <br>
 
-
-        Rate <input type="number" id="rate" value=5> <br />
-
+        <!--Dropdown menu for calculating year-->
         <label for="years">No. of Years</label>
-
         <select id="years">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -51,10 +60,7 @@
             <option value="20">20</option>
         </select><br>
 
-        
-
-
-        <!--Slider element for principal amount-->
+        <!--Script for calculating interest-->
         <script>
             function compute() {
                 var Principal = document.getElementById("principal");
@@ -72,15 +78,18 @@
 
                 var Received = Principal + ResultAmount;
 
-                var Line1 = "<br> If you deposit " + String(Principal) + "<br>"
-                var Line2 = "at an interest rate of " + String(Rate) +"% <br>";
-                var Line3 = "You will receive and amount of " + String(Received) + "<br>";
-                var Line4 = "in the year " + String(SetYear);
+                var Line1 = "<br> If you deposit <mark> " + String(Principal) + "</mark> <br>"
+                var Line2 = "at an interest rate of <mark> " + String(Rate) + "% </mark> <br>";
+                var Line3 = "You will receive an amount of <mark> " + String(Received) + " </mark>,<br>";
+                var Line4 = "in the year <mark>" + String(SetYear) + "</mark>";
                 ResultDiv.innerHTML = Line1 + Line2 + Line3 + Line4;
             }
         </script>
 
+        <!--Button to calculate computed interest-->
         <button onclick="compute()">Compute Interest</button>
+
+        <!--Element to contain intrest information for user-->
         <span id="result"></span>
 
     </div>

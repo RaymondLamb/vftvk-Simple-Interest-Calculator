@@ -1,6 +1,7 @@
 body {background-color:black;font:white: font="arial"}
 h1{color:gray;font:verdana}
 .maindiv {
+  border-radius: 20px;
   width: 300px;
   border: 25px;
   background-color: white;

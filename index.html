@@ -32,7 +32,7 @@
         </script>
 
         <!--Element Interest rate slider-->
-        Rate <input id="rate" type="range" min=0.25 max=20 step=0.25 value=5 onmousemove="updateSlider(this.value)">
+        Rate <input id="rate" type="range" min=1 max=20 step=0.25 value=5 onmousemove="updateSlider(this.value)">
         <span id="sliderAmount"></span> <br>
 
         <!--Dropdown menu for calculating year-->
@@ -76,8 +76,6 @@
                 var ResultAmount = Principal * convYears * (Rate / 100);
                 var ResultDiv = document.getElementById("result");
 
-                var Received = Principal + ResultAmount;
-
                 var Line1 = "<br> If you deposit <mark> " + String(Principal) + "</mark> <br>"
                 var Line2 = "at an interest rate of <mark> " + String(Rate) + "% </mark> <br>";
                 var Line3 = "You will receive an amount of <mark> " + String(ResultAmount) + " </mark>,<br>";
@@ -91,6 +89,8 @@
 
         <!--Element to contain intrest information for user-->
         <span id="result"></span>
+
+        <footer>&copy; Everyone Can Get Rich</footer>
 
     </div>
 </body>

@@ -1,50 +1,89 @@
 <!DOCTYPE html>
 <html>
-    <head>
-<title> Simple Interest Calculator</title>
+
+<head>
     <script src="script.js"></script>
+    <title> Simple Interest Calculator</title>
     <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+</head>
+
+<body>
     <div class="maindiv">
         <h1>Simple Interest Calculator</h1>
 
-        Amount <input id="principal" type="range" min="1" max="20" step="0.25" onchange="updateSlider(this.value)">
-        <span id="sliderAmount"></span> <br/>
-        <div id="sliderAmount"></div> <br/>
-        Rate <input type="number"  id="rate">  <br/>
+
+        <!--Slider element for principal amount-->
+        <script>
+            function updateSlider(slideAmount) {
+                var sliderDiv = document.getElementById("sliderAmount");
+                sliderDiv.innerHTML = slideAmount;
+            }
+        </script>
+        Amount <input id="principal" type="range" min=1000 max=200000 step=1000 value=100000
+            onchange="updateSlider(this.value)">
+        <span id="sliderAmount"></span> <br>
+
+
+        Rate <input type="number" id="rate" value=5> <br />
 
         <label for="years">No. of Years</label>
 
-<select id="years">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-</select><br>
+        <select id="years">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+        </select><br>
 
-        Interest : <span id="result"></span><br>
+        
+
+
+        <!--Slider element for principal amount-->
+        <script>
+            function compute() {
+                var Principal = document.getElementById("principal");
+                Principal = Principal.value * 1
+                var Rate = document.getElementById("rate");
+                Rate = Rate.value * 1
+                var Years = document.getElementById("years");
+                convYears = Number(Years.value);
+                let [month, date, CurrentYear] = new Date().toLocaleDateString("en-US").split("/")
+                CurrentYear = Number(CurrentYear);
+                var SetYear = CurrentYear + convYears
+
+                var ResultAmount = Principal * convYears * (Rate / 100);
+                var ResultDiv = document.getElementById("result");
+
+                var Received = Principal + ResultAmount;
+
+                var Line1 = "<br> If you deposit " + String(Principal) + "<br>"
+                var Line2 = "at an interest rate of " + String(Rate) +"% <br>";
+                var Line3 = "You will receive and amount of " + String(Received) + "<br>";
+                var Line4 = "in the year " + String(SetYear);
+                ResultDiv.innerHTML = Line1 + Line2 + Line3 + Line4;
+            }
+        </script>
 
         <button onclick="compute()">Compute Interest</button>
         <span id="result"></span>
 
     </div>
-    </body>
+</body>
 
 </html>
